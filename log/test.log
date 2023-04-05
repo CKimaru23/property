@@ -1,0 +1,1020 @@
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230325172552)[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2023-03-25 17:44:58.407851"], ["updated_at", "2023-03-25 17:44:58.407851"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "faf9a13fd669e549ee2fbe03b3ef84ea98291a37"], ["created_at", "2023-03-25 17:44:58.415415"], ["updated_at", "2023-03-25 17:44:58.415415"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$fYpCCHZJRkR3afcpZVV5Iu1nM1T7iF2R0aBCwGGZJmGOLsjoxT/Eu"], ["created_at", "2023-03-25 17:44:58.456859"], ["updated_at", "2023-03-25 17:44:58.456859"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.2ms | Allocations: 5185)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$63iXYmdBmis46R2RGXuFsegTjz91CdcC7AXr/br6Cor0KFOegqNI2"], ["created_at", "2023-03-25 17:44:58.512188"], ["updated_at", "2023-03-25 17:44:58.512188"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.1ms | Allocations: 1902)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$BZxRl3ppWJTyLdep5J5dnuDgOAfHxb2UTz6D77DVmO0ssey/W8EFS"], ["created_at", "2023-03-25 17:44:58.527470"], ["updated_at", "2023-03-25 17:44:58.527470"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.1ms | Allocations: 1902)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$7G1rx8sEElYetReV51htnulsrj1gu.fcLsVRshxow.3RRC2A7ZxfS"], ["created_at", "2023-03-25 17:44:58.542232"], ["updated_at", "2023-03-25 17:44:58.542232"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.1ms | Allocations: 1902)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$5iiLrocoZRxSADlr.Vhx3eL9kDYl.sdLmMTedJYh8jStwhsL0Bcje"], ["created_at", "2023-03-25 17:44:58.557167"], ["updated_at", "2023-03-25 17:44:58.557167"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"nobody", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nobody"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.1ms | Allocations: 1891)
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$Fmu1Dqs/jeRaQvV/BDY3deakhqE5utfDL6E6bERuCP9ZXgBT9yUQu"], ["created_at", "2023-03-25 17:44:58.578023"], ["updated_at", "2023-03-25 17:44:58.578023"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"nobody", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nobody"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.1ms | Allocations: 1891)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$bdG/L.9OuENTZWtiidu.EeAs4eiRoCOOgn4/akI9hO5/ORH5zvguy"], ["created_at", "2023-03-25 17:44:58.604630"], ["updated_at", "2023-03-25 17:44:58.604630"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.1ms | Allocations: 1909)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$H5k7cPJgZIh1wE0aofQ63uT10mampNW8tORV0p2iqsuFNCQ0UvPFK"], ["created_at", "2023-03-25 17:44:58.629105"], ["updated_at", "2023-03-25 17:44:58.629105"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.1ms | Allocations: 1909)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms | Allocations: 1795)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1770)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 1770)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 1770)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by UsersController#create as HTML
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 1780)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 1770)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$3U7OjR70VhZcgzN/24IlT.88xaWVVnUxD2u4yyL1leGxxU1YRKpGu"], ["created_at", "2023-03-25 17:44:58.731238"], ["updated_at", "2023-03-25 17:44:58.731238"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "Connie"], ["password_digest", "$2a$04$XmzHKDE8Qh7A1Tdk80wTXOE1svh6QaT.4NgvPI9XKd76LcPTH11fm"], ["created_at", "2023-03-25 17:44:58.734934"], ["updated_at", "2023-03-25 17:44:58.734934"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.1ms | Allocations: 1899)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$63YcG3N40pX1dV3Wddc0UOXEgxNFn0NYBvWuUW66MFzOsPrt.MVhq"], ["created_at", "2023-03-25 17:44:58.748454"], ["updated_at", "2023-03-25 17:44:58.748454"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "Connie"], ["password_digest", "$2a$04$y26ntHiGoUQwul/KH6yu4.q/NwVmzM8uK3ejrX.K5xdwVUraLR.Am"], ["created_at", "2023-03-25 17:44:58.752469"], ["updated_at", "2023-03-25 17:44:58.752469"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"Connie", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Connie"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms | Allocations: 1899)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$NUnEvDg.t56ZsKieKdt8h.X5numfzCOb/Vp/uWaZYjpoHFP1ZbUSq"], ["created_at", "2023-03-25 17:44:58.764645"], ["updated_at", "2023-03-25 17:44:58.764645"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "Connie"], ["password_digest", "$2a$04$Qu8Nww3PTqa.z2hE9ngZAe7eaiq33BHex9da8pOl8cpgk1JudZnOa"], ["created_at", "2023-03-25 17:44:58.768270"], ["updated_at", "2023-03-25 17:44:58.768270"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/me" for 127.0.0.1 at 2023-03-25 20:44:58 +0300
+Processing by UsersController#show as HTML
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 1767)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$5/n9KjwyGpoxrrt06QM2muTbFERSgRAPPD40AnRFDnoi3srVO3dOS"], ["created_at", "2023-03-25 19:34:40.488915"], ["updated_at", "2023-03-25 19:34:40.488915"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (1.28ms)
+Completed 201 Created in 43ms (Views: 5.6ms | ActiveRecord: 0.2ms | Allocations: 4315)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$fyn2EZzYrdUv.HOtSf0QYutKwhicKrDNSJFfro60OedEVCp52N4mO"], ["created_at", "2023-03-25 19:34:40.575783"], ["updated_at", "2023-03-25 19:34:40.575783"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.83ms)
+Completed 201 Created in 6ms (Views: 2.0ms | ActiveRecord: 0.3ms | Allocations: 584)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$K0zE5qcrnQ3R.CRcy8dDROH9OgaRaGs8VMThc8rxHfrN3rzDAgUpa"], ["created_at", "2023-03-25 19:34:40.597082"], ["updated_at", "2023-03-25 19:34:40.597082"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 401 Unauthorized in 3ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 320)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$wW4pBKc2tisiFApAYKVKy.386npUZbbFlHAaSkO.sEwNc..WV2Yxm"], ["created_at", "2023-03-25 19:34:40.610280"], ["updated_at", "2023-03-25 19:34:40.610280"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 401 Unauthorized in 4ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 275)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$OrUihqbkb2duAvtyWGFDZuc2de80BhuKKOkMYyZLIl0Lg4Rl5svFW"], ["created_at", "2023-03-25 19:34:40.627123"], ["updated_at", "2023-03-25 19:34:40.627123"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"nobody", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nobody"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 401 Unauthorized in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 236)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$1iF.pSzLtaEAx4JyPwLM9egyRp0eWBwspQwZXsc2F9VVw5arD8AVW"], ["created_at", "2023-03-25 19:34:40.644183"], ["updated_at", "2023-03-25 19:34:40.644183"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"nobody", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nobody"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 401 Unauthorized in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 236)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$qOhJdMa4VcUPwcb7n.D7eeb1k.8FqJfsYDqBR6bezDeTV4nx7kAqK"], ["created_at", "2023-03-25 19:34:40.660305"], ["updated_at", "2023-03-25 19:34:40.660305"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.33ms)
+Completed 201 Created in 4ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 448)
+Started DELETE "/logout" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by SessionsController#destroy as HTML
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 183)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (2.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$dzg2mCOaeg/k5EYuBXDZk.1VtLkF2XrQRq5jNtGolehT9rmsxKk1u"], ["created_at", "2023-03-25 19:34:40.681591"], ["updated_at", "2023-03-25 19:34:40.681591"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (3.63ms)
+Completed 201 Created in 10ms (Views: 5.3ms | ActiveRecord: 0.3ms | Allocations: 448)
+Started DELETE "/logout" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by SessionsController#destroy as HTML
+Completed 204 No Content in 3ms (ActiveRecord: 0.0ms | Allocations: 166)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms | Allocations: 1811)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms | Allocations: 1774)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms | Allocations: 1774)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms | Allocations: 1774)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by UsersController#create as HTML
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 1784)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 1774)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$nbyfQYq0thSR5FSR8KULHe8J1xC3W7eVLFYbzcyZ5yW5QnSz7xNTm"], ["created_at", "2023-03-25 19:34:40.872867"], ["updated_at", "2023-03-25 19:34:40.872867"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "Connie"], ["password_digest", "$2a$04$W9Hq3cK/DZf4paO0a1qhhOo/ah/sd9aXWMMkrsKOENTc01YyaMoWG"], ["created_at", "2023-03-25 19:34:40.878730"], ["updated_at", "2023-03-25 19:34:40.878730"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.69ms)
+Completed 201 Created in 5ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 449)
+Started GET "/me" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by UsersController#show as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 1771)
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$sHr8IAoATdh.e4Ub1eGnxO9GGupuSstni1Xe9RIHFtuDNqnDYY9mG"], ["created_at", "2023-03-25 19:34:40.916547"], ["updated_at", "2023-03-25 19:34:40.916547"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "Connie"], ["password_digest", "$2a$04$Z.lccl8aXUXBv6sa9Fj5U.BDVfiPuAMTvy350xjykk80RDQLcxpWa"], ["created_at", "2023-03-25 19:34:40.923605"], ["updated_at", "2023-03-25 19:34:40.923605"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"Connie", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Connie"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (1.62ms)
+Completed 201 Created in 8ms (Views: 3.7ms | ActiveRecord: 0.3ms | Allocations: 448)
+Started GET "/me" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by UsersController#show as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 1771)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$5pP7GeBqYu73nobuOawUluVAoKaYeYLsxqzBcwTAbTeqisuHeYNt6"], ["created_at", "2023-03-25 19:34:40.955506"], ["updated_at", "2023-03-25 19:34:40.955506"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "Connie"], ["password_digest", "$2a$04$Ga3Qh4ZDiZMJHQBqHXczSeAPjJp4N1GDtbnhavfcR3Q0ESPNmbfQu"], ["created_at", "2023-03-25 19:34:40.962288"], ["updated_at", "2023-03-25 19:34:40.962288"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/me" for 127.0.0.1 at 2023-03-25 22:34:40 +0300
+Processing by UsersController#show as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 1771)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$KoBHenf.gEMPzseiXOl98OiPwdiCl9U0w75RtThw6Eap65lUUlCdO"], ["created_at", "2023-03-25 19:47:23.105223"], ["updated_at", "2023-03-25 19:47:23.105223"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.42ms)
+Completed 201 Created in 43ms (Views: 2.8ms | ActiveRecord: 0.4ms | Allocations: 4314)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$6UKAKAQsLOJC2/1h7ZEGwOhHS2zPTzergOzyaDs7LAY6/8Q4Fj72e"], ["created_at", "2023-03-25 19:47:23.176865"], ["updated_at", "2023-03-25 19:47:23.176865"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.6ms)
+Completed 201 Created in 5ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 584)
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$EeSJ5NjarS6JOalz27k6D.ud6u1E3y1xdln6RbTPzh9h95RyBFxGK"], ["created_at", "2023-03-25 19:47:23.197766"], ["updated_at", "2023-03-25 19:47:23.197766"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.2ms)
+Completed 401 Unauthorized in 7ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 320)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$6aJJ3sj5tgPxv9oK4X/k6.gOy.WUDAGNOummj7RcOn.bNKbMY.pN."], ["created_at", "2023-03-25 19:47:23.217944"], ["updated_at", "2023-03-25 19:47:23.217944"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 401 Unauthorized in 3ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 275)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$xW70WdxaXlLXe8cKkoPX5eH7ClDC8dI62i0PYjUN298n0kOnBFOYm"], ["created_at", "2023-03-25 19:47:23.231695"], ["updated_at", "2023-03-25 19:47:23.231695"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"nobody", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nobody"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 401 Unauthorized in 2ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 236)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$7TM5frwMQeUkh3kt6bNOqerSSNYAQajAjN1Sh0AeNS/nA5VwZ/.f."], ["created_at", "2023-03-25 19:47:23.243424"], ["updated_at", "2023-03-25 19:47:23.243424"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"nobody", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nobody"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 236)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$VlD8qwTMhzjEdl5zNxbep.uJ7KsCVLN0.jotW0atHPDs3/NRMjsZe"], ["created_at", "2023-03-25 19:47:23.258463"], ["updated_at", "2023-03-25 19:47:23.258463"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (1.48ms)
+Completed 201 Created in 9ms (Views: 3.8ms | ActiveRecord: 0.3ms | Allocations: 448)
+Started DELETE "/logout" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by SessionsController#destroy as HTML
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 171)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$KcTg5rqHvNbaxGBijee0Fu/uqwZFl1iCiRY716oknKCl6uCstcNW."], ["created_at", "2023-03-25 19:47:23.289938"], ["updated_at", "2023-03-25 19:47:23.289938"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.49ms)
+Completed 201 Created in 6ms (Views: 3.3ms | ActiveRecord: 0.1ms | Allocations: 448)
+Started DELETE "/logout" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by SessionsController#destroy as HTML
+Completed 204 No Content in 2ms (ActiveRecord: 0.0ms | Allocations: 170)
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["password_digest", "$2a$04$2fIk1hGrFEa.uAubh/EWYegQYF9HBarYp7iVuKH4OBR4MLpYNEJsG"], ["created_at", "2023-03-25 19:47:23.345150"], ["updated_at", "2023-03-25 19:47:23.345150"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.28ms)
+Completed 201 Created in 10ms (Views: 0.9ms | ActiveRecord: 0.5ms | Allocations: 811)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["password_digest", "$2a$04$1BQWkXNVZbK7vJfuoOk1xuMQDioGJjL8y0UeTw0Sh24ddADnzkcr."], ["created_at", "2023-03-25 19:47:23.364338"], ["updated_at", "2023-03-25 19:47:23.364338"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.36ms)
+Completed 201 Created in 14ms (Views: 1.7ms | ActiveRecord: 1.5ms | Allocations: 797)
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["password_digest", "$2a$04$Vxteyu1aJ2cfdWkWF3HKUu0RhtdJBTrL1bHIA2k1SAFb2QcCRtNA."], ["created_at", "2023-03-25 19:47:23.392464"], ["updated_at", "2023-03-25 19:47:23.392464"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.32ms)
+Completed 201 Created in 12ms (Views: 3.0ms | ActiveRecord: 1.0ms | Allocations: 797)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["password_digest", "$2a$04$TB927x0Pb.IGRUacJRhQke3Wb6AHiVtL1VKoVMewOgN11/0A929VO"], ["created_at", "2023-03-25 19:47:23.418927"], ["updated_at", "2023-03-25 19:47:23.418927"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.48ms)
+Completed 201 Created in 13ms (Views: 1.4ms | ActiveRecord: 0.9ms | Allocations: 797)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by UsersController#create as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 422 Unprocessable Entity in 25ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 2963)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 422 Unprocessable Entity in 7ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 1208)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$Y3zObi/uSg8QiyqXAQEnTe3Kz1OG6vKLjOGzsmAVdcPwA4W5Eh8mS"], ["created_at", "2023-03-25 19:47:23.498404"], ["updated_at", "2023-03-25 19:47:23.498404"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "Connie"], ["password_digest", "$2a$04$qTWe74nP1OeBv/nMhqoegOa0w9huhE0QoUFDZH29o6OXFtslIIwzq"], ["created_at", "2023-03-25 19:47:23.503302"], ["updated_at", "2023-03-25 19:47:23.503302"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.43ms)
+Completed 201 Created in 4ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 497)
+Started GET "/me" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by UsersController#show as HTML
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 171)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$TT8XM2xvNOHIbkM7ZyGwQ.nSgcrAh5/og/AFnAo3nuBMyL8qtwJ3m"], ["created_at", "2023-03-25 19:47:23.526199"], ["updated_at", "2023-03-25 19:47:23.526199"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "Connie"], ["password_digest", "$2a$04$ZP21SyRwma7gaFx/1hh/Uu8y8KQ/CuoMpuJ7dU3VCQZHa9HJSlpbG"], ["created_at", "2023-03-25 19:47:23.531506"], ["updated_at", "2023-03-25 19:47:23.531506"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"Connie", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Connie"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.51ms)
+Completed 201 Created in 4ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 448)
+Started GET "/me" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by UsersController#show as HTML
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 161)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$Y7rHiR9PZJ4WwGbeC1lw9.h/Y70a5qUA/tfBkEcl3g5F9.SBAFfC6"], ["created_at", "2023-03-25 19:47:23.556637"], ["updated_at", "2023-03-25 19:47:23.556637"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "Connie"], ["password_digest", "$2a$04$qfzftZzd0pYOv8VOb7FqP.l1GMFUKMcowFVFW03ZETxsBn1FknfkW"], ["created_at", "2023-03-25 19:47:23.561090"], ["updated_at", "2023-03-25 19:47:23.561090"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/me" for 127.0.0.1 at 2023-03-25 22:47:23 +0300
+Processing by UsersController#show as HTML
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 161)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$2kLUerGpprTDzWqfbMsIPu8U5kziLuX4qNvO/SNoMPURk6Vsc0VLS"], ["created_at", "2023-03-25 19:51:46.483206"], ["updated_at", "2023-03-25 19:51:46.483206"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.91ms)
+Completed 201 Created in 38ms (Views: 8.2ms | ActiveRecord: 0.4ms | Allocations: 4314)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$7Yz5uJ6ml1cYLxsqXotOEO0mPF7AJTqLwmss/myZG7ZRVjyXda7sq"], ["created_at", "2023-03-25 19:51:46.564742"], ["updated_at", "2023-03-25 19:51:46.564742"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (14.77ms)
+Completed 201 Created in 18ms (Views: 15.6ms | ActiveRecord: 0.1ms | Allocations: 585)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$xLxGIxVVvd1mfjaVe9GNOuhV0Fr1pMKnujiVeqpcIA.MLBIrqvtpm"], ["created_at", "2023-03-25 19:51:46.600402"], ["updated_at", "2023-03-25 19:51:46.600402"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 401 Unauthorized in 4ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 321)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$aKEZInPEypQ.oE0D2EzhLOoGwhyyz4SLVkuLPoZlbyLa1ReqlLqGa"], ["created_at", "2023-03-25 19:51:46.624184"], ["updated_at", "2023-03-25 19:51:46.624184"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.61ms)
+Completed 401 Unauthorized in 7ms (Views: 2.2ms | ActiveRecord: 0.6ms | Allocations: 275)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (2.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$y6RLZM2.0wRtJZMP/ERQA.wo71QKJDgMZd6Pd4HFS3Vluwn8HXDKe"], ["created_at", "2023-03-25 19:51:46.647358"], ["updated_at", "2023-03-25 19:51:46.647358"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"nobody", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nobody"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 401 Unauthorized in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 236)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$mRlQCzQEiVz7Yftajs0X/uCmeLi9L8yDnMEcHhB4ssZnAj6fuhS8."], ["created_at", "2023-03-25 19:51:46.666668"], ["updated_at", "2023-03-25 19:51:46.666668"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"nobody", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nobody"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 236)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$XpJVhni21v8iEfvA1VjID.Jx7E.4o8FZ.NOEgi/gw/ODgr7BGq5H2"], ["created_at", "2023-03-25 19:51:46.677851"], ["updated_at", "2023-03-25 19:51:46.677851"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.37ms)
+Completed 201 Created in 4ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 448)
+Started DELETE "/logout" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by SessionsController#destroy as HTML
+Completed 204 No Content in 2ms (ActiveRecord: 0.0ms | Allocations: 183)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$QWUQilTxsylX4WsaKCj6dO.ztAj.t/SbvGrjd6SO6i05fGoWFZum."], ["created_at", "2023-03-25 19:51:46.701347"], ["updated_at", "2023-03-25 19:51:46.701347"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.95ms)
+Completed 201 Created in 6ms (Views: 2.4ms | ActiveRecord: 0.1ms | Allocations: 448)
+Started DELETE "/logout" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by SessionsController#destroy as HTML
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 174)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["password_digest", "$2a$04$Zv56ubiVvQqVepdIGGZRnudrElB3xrvQbAR1KNZfq9jrNnTgejqTW"], ["created_at", "2023-03-25 19:51:46.749802"], ["updated_at", "2023-03-25 19:51:46.749802"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (1.32ms)
+Completed 201 Created in 15ms (Views: 2.7ms | ActiveRecord: 1.8ms | Allocations: 812)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["password_digest", "$2a$04$EcuBM8oyKGhjtWXYxk1hPuzkUnLd2NnNHw2P51cbznKOg7DHlCMKe"], ["created_at", "2023-03-25 19:51:46.788188"], ["updated_at", "2023-03-25 19:51:46.788188"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.3ms)
+Completed 201 Created in 12ms (Views: 1.0ms | ActiveRecord: 0.8ms | Allocations: 797)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["password_digest", "$2a$04$VqFK8sOQ2RWfyn4pOqj9AescdihXVta6y1.SGssjVgWm6zqAxja1."], ["created_at", "2023-03-25 19:51:46.820109"], ["updated_at", "2023-03-25 19:51:46.820109"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.37ms)
+Completed 201 Created in 16ms (Views: 4.0ms | ActiveRecord: 1.3ms | Allocations: 797)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["password_digest", "$2a$04$VDo7dpH0v4VaIxA4uYZaFO6.a9dD6BLt6bOv8LuisbhyIaxXYBJhS"], ["created_at", "2023-03-25 19:51:46.855091"], ["updated_at", "2023-03-25 19:51:46.855091"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (1.07ms)
+Completed 201 Created in 13ms (Views: 2.9ms | ActiveRecord: 0.8ms | Allocations: 797)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by UsersController#create as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 422 Unprocessable Entity in 31ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 2962)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 422 Unprocessable Entity in 18ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 1208)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$7auGTnuQZ1.lA44pUqvDu.sx2QBiuIXYESy0ztjk6p9q/VeNY9cXm"], ["created_at", "2023-03-25 19:51:46.970036"], ["updated_at", "2023-03-25 19:51:46.970036"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "Connie"], ["password_digest", "$2a$04$wwasiOQ0/rhBryVRC3BYoeSaphGavn/n7HlCXvBXFuwetCELMhMW2"], ["created_at", "2023-03-25 19:51:46.991607"], ["updated_at", "2023-03-25 19:51:46.991607"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:51:46 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.6ms)
+Completed 201 Created in 6ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 498)
+Started GET "/me" for 127.0.0.1 at 2023-03-25 22:51:47 +0300
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.45ms)
+Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 0.3ms | Allocations: 624)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$1uUIWivJozVapjs3x9DPL./Lif.kBU7wjE2uwe8DAOZ/FAVjWOq56"], ["created_at", "2023-03-25 19:51:47.029768"], ["updated_at", "2023-03-25 19:51:47.029768"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "Connie"], ["password_digest", "$2a$04$n4NFt.qFYxyXz2DoRKsu.OuPr2ImBFCYbj.TgUkWEjuzj5kTu70Z6"], ["created_at", "2023-03-25 19:51:47.035737"], ["updated_at", "2023-03-25 19:51:47.035737"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 22:51:47 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"Connie", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Connie"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.6ms)
+Completed 201 Created in 5ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 584)
+Started GET "/me" for 127.0.0.1 at 2023-03-25 22:51:47 +0300
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.47ms)
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 494)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$n76gimdQnBhHdCOadVI4yuemB8o4Si/OL8EZ8Cr/I8k2vDuKdDJBm"], ["created_at", "2023-03-25 19:51:47.073803"], ["updated_at", "2023-03-25 19:51:47.073803"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "Connie"], ["password_digest", "$2a$04$IIhBSU9QjVWSeyk6U087me/uiKxa/Vd.4h7KlIWRgB3sDDdcC20ai"], ["created_at", "2023-03-25 19:51:47.080299"], ["updated_at", "2023-03-25 19:51:47.080299"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/me" for 127.0.0.1 at 2023-03-25 22:51:47 +0300
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 401 Unauthorized in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 553)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$YTObG3c5ZddvQ2q7OVK0deTc0EgvPwN5eep5OmFiY4pbGrCVNsjcK"], ["created_at", "2023-03-25 20:02:55.553334"], ["updated_at", "2023-03-25 20:02:55.553334"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.52ms)
+Completed 201 Created in 38ms (Views: 3.1ms | ActiveRecord: 0.2ms | Allocations: 4312)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$9Fyh/QlttvM1CnXv3twV7.SrHp8vWVeTZ0E6ECvjoBlDmWHJPwXLa"], ["created_at", "2023-03-25 20:02:55.627069"], ["updated_at", "2023-03-25 20:02:55.627069"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.47ms)
+Completed 201 Created in 4ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 584)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$fw6yQVwZ7YdzLEd5rRfQfOi60iIn6eSLpxujhiAFLp2/D64eWx8/m"], ["created_at", "2023-03-25 20:02:55.646006"], ["updated_at", "2023-03-25 20:02:55.646006"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.82ms)
+Completed 401 Unauthorized in 4ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 320)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$fPCivjNjREP.qwpWXk.rwexdpblgW/BLvJrNEI7WFCjKHiMV7O8Tm"], ["created_at", "2023-03-25 20:02:55.661445"], ["updated_at", "2023-03-25 20:02:55.661445"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 401 Unauthorized in 4ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 275)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$yXO0CtERphVBwdG1L5Nbv.tnROty0Fmx4w0Gdygo9uBBWUUCQXpHe"], ["created_at", "2023-03-25 20:02:55.675114"], ["updated_at", "2023-03-25 20:02:55.675114"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"nobody", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nobody"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 236)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$t9379u1.Cs3qeVeISb4j8uVzYWgnL23Sp/ylETHAe3hg3R9o40kWe"], ["created_at", "2023-03-25 20:02:55.685405"], ["updated_at", "2023-03-25 20:02:55.685405"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"nobody", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nobody"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 401 Unauthorized in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 236)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$FbSjA2vxwElCS9jQZri8MOe2v8oTi649Oh9jg7XrPWbjcWqnFVTNW"], ["created_at", "2023-03-25 20:02:55.697740"], ["updated_at", "2023-03-25 20:02:55.697740"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.41ms)
+Completed 201 Created in 4ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 448)
+Started DELETE "/logout" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by SessionsController#destroy as HTML
+Completed 204 No Content in 2ms (ActiveRecord: 0.0ms | Allocations: 177)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$9YRr5YilDMzStwBSvx1MtOf4akdY7zCJ46pp2Cb/pFsamQf.SsFfW"], ["created_at", "2023-03-25 20:02:55.722906"], ["updated_at", "2023-03-25 20:02:55.722906"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.36ms)
+Completed 201 Created in 4ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 448)
+Started DELETE "/logout" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by SessionsController#destroy as HTML
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 170)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["password_digest", "$2a$04$zeNkIk1AUk/vXYll.g7Fue0c2GH/OKWAVbjNXdQt38tC9ZZlDu1ee"], ["created_at", "2023-03-25 20:02:55.768655"], ["updated_at", "2023-03-25 20:02:55.768655"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.26ms)
+Completed 201 Created in 10ms (Views: 0.8ms | ActiveRecord: 0.6ms | Allocations: 811)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["password_digest", "$2a$04$CTjThvhDNe73opfkfj98p.lGpD1SOHKOm8sSGyB7Oe7XKYk9VzVIG"], ["created_at", "2023-03-25 20:02:55.788581"], ["updated_at", "2023-03-25 20:02:55.788581"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.33ms)
+Completed 201 Created in 8ms (Views: 1.9ms | ActiveRecord: 0.6ms | Allocations: 797)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["password_digest", "$2a$04$RXW7.py4P0sMnnK90mglRegLDeu1fM1ouIExrKSZp/X4VcUHmdGwK"], ["created_at", "2023-03-25 20:02:55.817377"], ["updated_at", "2023-03-25 20:02:55.817377"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.28ms)
+Completed 201 Created in 12ms (Views: 2.7ms | ActiveRecord: 0.6ms | Allocations: 797)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["password_digest", "$2a$04$6XipTc7DGd3H4/dlhfT6TuaLzwtTHFrPeyLkX9kMCt6EMQCYpN7F."], ["created_at", "2023-03-25 20:02:55.841941"], ["updated_at", "2023-03-25 20:02:55.841941"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.28ms)
+Completed 201 Created in 10ms (Views: 1.1ms | ActiveRecord: 0.7ms | Allocations: 797)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by UsersController#create as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 422 Unprocessable Entity in 4ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 1096)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"Steven", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameter: :name[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 422 Unprocessable Entity in 7ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 1208)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$8oGem53.vJde3TXmV32zw.2lo8UkXRimS700KHAXMlVUeYjLm3bQa"], ["created_at", "2023-03-25 20:02:55.895371"], ["updated_at", "2023-03-25 20:02:55.895371"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "Connie"], ["password_digest", "$2a$04$/oAV4hLGLpUT9XCkcFIjZ.A73rhUDGDJ6M427evpn6yllwg8Rz.Gq"], ["created_at", "2023-03-25 20:02:55.903400"], ["updated_at", "2023-03-25 20:02:55.903400"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"steven", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "steven"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.42ms)
+Completed 201 Created in 5ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 499)
+Started GET "/me" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.43ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 623)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$TZHKdSvvTKvCkHRMRZnfAOSpdMfEVeNzw8vTJmsBEFmq.p61AAwhC"], ["created_at", "2023-03-25 20:02:55.931308"], ["updated_at", "2023-03-25 20:02:55.931308"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "Connie"], ["password_digest", "$2a$04$fB3PbUqmW5eTQzlPKFPZ3uGSGfLsNdjWOz8mkcHR3x0M6ch3ZhIYa"], ["created_at", "2023-03-25 20:02:55.935519"], ["updated_at", "2023-03-25 20:02:55.935519"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"username"=>"Connie", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Connie"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.64ms)
+Completed 201 Created in 6ms (Views: 1.7ms | ActiveRecord: 0.3ms | Allocations: 584)
+Started GET "/me" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.24ms)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 494)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "steven"], ["password_digest", "$2a$04$.DTcwul0r8Hp1p.s3RsBAOlxLCJ70fk1smfn26gsxfCjcKFhkJ0kG"], ["created_at", "2023-03-25 20:02:55.961597"], ["updated_at", "2023-03-25 20:02:55.961597"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "Connie"], ["password_digest", "$2a$04$jOUuY9VwnOGI5T65vI1jN.FpMYVUOFhc7/Txe9xG2qCPFwy7oIO2."], ["created_at", "2023-03-25 20:02:55.966242"], ["updated_at", "2023-03-25 20:02:55.966242"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/me" for 127.0.0.1 at 2023-03-25 23:02:55 +0300
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 401 Unauthorized in 3ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 553)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
