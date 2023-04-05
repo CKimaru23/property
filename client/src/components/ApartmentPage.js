@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-// import NewPlantForm from "./NewPlantForm";
-// import PlantList from "./PlantList";
-// import Search from "./Search";
+import NewApartmentForm from "./NewApartmentForm";
+import ApartmentList from "./ApartmentList";
+import Search from "./Search";
 
 function ApartmentPage() {
   const [apartments, setApartments] = useState([]);

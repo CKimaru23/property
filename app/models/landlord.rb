@@ -3,6 +3,8 @@ class Landlord < ApplicationRecord
     # has_many :tenants, through: :properties
     # has_many :payments, through: :tenants
     # has_many :todos
+
+    has_many :apartments
   
     # Validations
     validates :fname, presence: true
@@ -16,11 +18,11 @@ class Landlord < ApplicationRecord
 
     private
 
-    def passwords_match
-      if password != password_confirmation
-        errors.add(:password_confirmation, "does not match password")
-      end
-    end
+    # def passwords_match
+    #   if password != password_confirmation
+    #     errors.add(:password_confirmation, "does not match password")
+    #   end
+    # end
   
     has_secure_password
   

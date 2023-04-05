@@ -6,6 +6,7 @@ import NavBar from './NavBar'
 import Home from "./Home";
 import Contact from "./Contact";
 import About from "./About";
+import ApartmentPage from "./ApartmentPage";
 
 function App() {
   const [landlord, setLandlord] = useState(null);
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/about">
               <About/>
+          </Route>
+          <Route path="/apartment">
+              <ApartmentPage/>
           </Route>
           <Route path="/signup">
               <SignUp setLandlord={setLandlord} />
