@@ -46,6 +46,8 @@ Each Landlord has many Todos.
 Each Todo belongs to a Landlord.
 ```
 
+![First-ERD](https://user-images.githubusercontent.com/117735833/230474741-83d2b923-b37e-4adf-8e9d-e192cd61088a.png)
+
 ### Getting Started
 To get started with this application, you should have Ruby and Rails installed on your local machine.
 
