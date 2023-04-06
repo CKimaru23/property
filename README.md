@@ -29,11 +29,22 @@ This is a web application for managing landlords, apartments and todos (for now)
 ### Technologies Used
 This application was built using the following technologies:
 
--> Ruby on Rails
--> React
--> Bootstrap
--> Axios
--> Semantic-ui-react
+1. Ruby on Rails
+2. React
+3. Bootstrap
+4. Axios
+5. Semantic-ui-react
+
+
+### Models (For Now)
+Here's how the associations work:
+
+```ruby
+Each Apartment belongs to a Landlord.
+Each Landlord has many Apartments.
+Each Landlord has many Todos.
+Each Todo belongs to a Landlord.
+```
 
 ### Getting Started
 To get started with this application, you should have Ruby and Rails installed on your local machine.
