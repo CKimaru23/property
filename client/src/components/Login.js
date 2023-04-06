@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Header } from "semantic-ui-react";
 import Footer from "./Footer";
+import {useHistory} from 'react-router-dom'
 
 function Login({ setLandlord }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,6 +20,7 @@ function Login({ setLandlord }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((landlord) => setLandlord(landlord));
+        history.push("/home")
       }
     });
   }

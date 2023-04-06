@@ -17,19 +17,19 @@ function ApartmentPage() {
 
   function handleAddApartment(newApartment) {
     const updatedApartmentsArray = [...apartments, newApartment];
-    setPlants(updatedApartmentsArray);
+    setApartments(updatedApartmentsArray);
   }
 
   function handleDeleteApartment(id) {
     const updatedApartmentsArray = apartments.filter((apartment) => apartment.id !== id);
-    setPlants(updatedApartmentsArray);
+    setApartments(updatedApartmentsArray);
   }
 
   function handleUpdateApartment(updatedApartment) {
     const updatedApartmentsArray = apartments.map((apartment) => {
       return apartment.id === updatedApartment.id ? updatedApartment : apartment;
     });
-    setPlants(updatedApartmentsArray);
+    setApartments(updatedApartmentsArray);
   }
 
   const displayedApartments = apartments.filter((apartment) => {

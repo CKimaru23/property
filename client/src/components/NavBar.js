@@ -29,11 +29,15 @@ const NavBar = ({ landlord, setLandlord }) => {
       <Menu.Menu position="right">
 
       {landlord ? (
-        
+        <>
+          <Menu.Item>
+            <Link to="/apartments">My Properties</Link>
+          </Menu.Item>
           <Menu.Item>
             <Link to="/logout" onClick={handleLogoutClick}>Logout</Link>
           </Menu.Item>
-          // <button onClick={handleLogoutClick}>Logout</button>
+          
+        </>
         ) : (
           <>
             <Menu.Item>

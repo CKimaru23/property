@@ -16,7 +16,7 @@ class Landlord < ApplicationRecord
     validates :password_confirmation, presence: true
     validate :passwords_match
 
-    private
+    # private
 
     # def passwords_match
     #   if password != password_confirmation
