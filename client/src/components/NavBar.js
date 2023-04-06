@@ -31,6 +31,9 @@ const NavBar = ({ landlord, setLandlord }) => {
       {landlord ? (
         <>
           <Menu.Item>
+            <Link to="/todos">To Do List</Link>
+          </Menu.Item>
+          <Menu.Item>
             <Link to="/apartments">My Properties</Link>
           </Menu.Item>
           <Menu.Item>
