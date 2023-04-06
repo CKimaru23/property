@@ -3,4 +3,5 @@ class Apartment < ApplicationRecord
     validates :name, presence: true, length: { maximum: 50 }
     validates :image, presence: true
     validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+    validates :is_on_sale, presence: true
 end

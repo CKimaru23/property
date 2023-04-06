@@ -43,8 +43,9 @@ const Contact = () => {
       .then(data => {
         if (data.success) {
           setFormSuccess(true);
-          history.push("/")
+          
         } 
+        history.push("/home")
         // else {
         //   setFormError(data.message);
         // }

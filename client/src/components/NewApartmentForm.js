@@ -44,7 +44,7 @@ function NewApartmentForm({ onAddApartment }) {
         <input
           type="number"
           name="price"
-          step="1000.00"
+          step="100000.00"
           placeholder="Price"
           value={price}
           onChange={(e) => setPrice(parseFloat(e.target.value))}

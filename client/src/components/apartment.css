@@ -1,5 +1,5 @@
 :root {
-    --green: rgb(123, 80, 179);
+    --green: rgb(17, 32, 24);
   }
   
   * {
@@ -25,17 +25,17 @@
   
   button.primary {
     background-color: var(--green);
-    color: blueviolet;
+    color: rgb(211, 226, 43);
   }
 
   button.secondary {
     background-color: var(--orange);
-    color: blueviolet;
+    color: rgb(43, 226, 92);
   }
 
   button.danger {
     background-color: var(--red);
-    color: blueviolet;
+    color: red;
   }
   
   .app {
@@ -93,7 +93,7 @@
   }
   
   input {
-    padding: 0.25rem;
+    padding: 0.5rem;
     border: none;
     font-family: inherit;
     font-size: 1.2em;
