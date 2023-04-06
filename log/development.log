@@ -4194,3 +4194,93 @@ Processing by ApartmentsController#index as */*
 Completed 200 OK in 8ms (Views: 4.9ms | ActiveRecord: 0.6ms | Allocations: 1667)
 
 
+Started GET "/me" for 127.0.0.1 at 2023-04-06 03:37:39 +0300
+  [1m[35m (8.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by LandlordsController#show as */*
+  [1m[36mLandlord Load (0.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/landlords_controller.rb:13:in `show'
+[active_model_serializers] Rendered LandlordSerializer with ActiveModelSerializers::Adapter::Attributes (1.42ms)
+Completed 200 OK in 69ms (Views: 17.8ms | ActiveRecord: 1.2ms | Allocations: 12562)
+
+
+Started GET "/apartments" for 127.0.0.1 at 2023-04-06 03:37:43 +0300
+Processing by ApartmentsController#index as */*
+  [1m[36mLandlord Load (0.2ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.2ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ?[0m  [["landlord_id", 8]]
+  ↳ app/controllers/apartments_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.78ms)
+Completed 200 OK in 46ms (Views: 26.8ms | ActiveRecord: 1.3ms | Allocations: 9331)
+
+
+Started DELETE "/apartments/2" for 127.0.0.1 at 2023-04-06 03:37:54 +0300
+Processing by ApartmentsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mLandlord Load (0.4ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.4ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 8], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/apartments_controller.rb:31:in `destroy'
+  [1m[36mApartment Destroy (0.5ms)[0m  [1m[31mDELETE FROM "apartments" WHERE "apartments"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/apartments_controller.rb:31:in `destroy'
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/apartments_controller.rb:31:in `destroy'
+Completed 204 No Content in 32ms (ActiveRecord: 11.7ms | Allocations: 4833)
+
+
+Started PATCH "/apartments/1" for 127.0.0.1 at 2023-04-06 03:38:03 +0300
+Processing by ApartmentsController#update as */*
+  Parameters: {"is_on_sale"=>true, "id"=>"1", "apartment"=>{}}
+  [1m[36mLandlord Load (0.4ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.3ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+Completed 400 Bad Request in 10ms (ActiveRecord: 0.7ms | Allocations: 1404)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: apartment
+Did you mean?  apartment
+               action
+               controller
+               is_on_sale):
+  
+app/controllers/apartments_controller.rb:42:in `apartment_params'
+app/controllers/apartments_controller.rb:23:in `update'
+Started PATCH "/apartments/1" for 127.0.0.1 at 2023-04-06 03:38:05 +0300
+Processing by ApartmentsController#update as */*
+  Parameters: {"is_on_sale"=>true, "id"=>"1", "apartment"=>{}}
+  [1m[36mLandlord Load (0.1ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.1ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+Completed 400 Bad Request in 6ms (ActiveRecord: 0.3ms | Allocations: 1396)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: apartment
+Did you mean?  apartment
+               action
+               controller
+               is_on_sale):
+  
+app/controllers/apartments_controller.rb:42:in `apartment_params'
+app/controllers/apartments_controller.rb:23:in `update'
+Started DELETE "/apartments/1" for 127.0.0.1 at 2023-04-06 03:38:33 +0300
+Processing by ApartmentsController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mLandlord Load (0.1ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.3ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/apartments_controller.rb:31:in `destroy'
+  [1m[36mApartment Destroy (0.4ms)[0m  [1m[31mDELETE FROM "apartments" WHERE "apartments"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/apartments_controller.rb:31:in `destroy'
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/apartments_controller.rb:31:in `destroy'
+Completed 204 No Content in 23ms (ActiveRecord: 11.1ms | Allocations: 4022)
+
+

@@ -1,9 +1,9 @@
 :root {
-    --green: rgb(39, 189, 39);
+    --green: rgb(123, 80, 179);
   }
   
   * {
-    margin: 0;
+    margin: 30px, 30px;
     padding: 0;
     box-sizing: border-box;
   }
@@ -25,17 +25,17 @@
   
   button.primary {
     background-color: var(--green);
-    color: white;
+    color: blueviolet;
   }
 
   button.secondary {
     background-color: var(--orange);
-    color: white;
+    color: blueviolet;
   }
 
   button.danger {
     background-color: var(--red);
-    color: white;
+    color: blueviolet;
   }
   
   .app {
@@ -64,7 +64,7 @@
   .new-apartment-form {
     padding: 2rem 1rem;
     margin: 2rem 0;
-    background-color: rgba(181, 250, 181, 0.5);
+    background-color: rgba(90, 134, 224, 0.5);
   }
   
   .new-apartment-form form {
