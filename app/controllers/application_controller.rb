@@ -7,5 +7,4 @@ end
 class ApplicationController < ActionController::API
   include ActionController::Cookies
   include MyHelperMethods  
-
 end

@@ -11713,3 +11713,461 @@ Completed 200 OK in 17ms (Views: 13.2ms | ActiveRecord: 0.5ms | Allocations: 248
 Completed 200 OK in 13ms (Views: 4.1ms | ActiveRecord: 0.2ms | Allocations: 1536)
 
 
+Started GET "/me" for 127.0.0.1 at 2023-04-06 22:30:46 +0300
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by LandlordsController#show as */*
+  [1m[36mLandlord Load (0.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/landlords_controller.rb:13:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.35ms)
+Completed 401 Unauthorized in 42ms (Views: 2.6ms | ActiveRecord: 0.7ms | Allocations: 7948)
+
+
+Started POST "/signup" for 127.0.0.1 at 2023-04-06 22:31:38 +0300
+Processing by LandlordsController#create as */*
+  Parameters: {"fname"=>"Dev", "lname"=>"me", "email"=>"dev@gmail.com", "phoneNumber"=>"1234567890", "address"=>"112", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "landlord"=>{"fname"=>"Dev", "lname"=>"me", "email"=>"dev@gmail.com", "phoneNumber"=>"1234567890", "address"=>"112"}}
+[31mUnpermitted parameter: :landlord[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/landlords_controller.rb:3:in `create'
+  [1m[36mLandlord Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "landlords" WHERE "landlords"."email" = ? LIMIT ?[0m  [["email", "dev@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/landlords_controller.rb:3:in `create'
+  [1m[36mLandlord Create (1.2ms)[0m  [1m[32mINSERT INTO "landlords" ("fname", "lname", "email", "password_digest", "phoneNumber", "address", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["fname", "Dev"], ["lname", "me"], ["email", "dev@gmail.com"], ["password_digest", "$2a$12$27A.MbMxzdD3Foej36OuKetfejoHuByH2xHBiT3g6.zzxcTn.t1Xe"], ["phoneNumber", "1234567890"], ["address", "112"], ["created_at", "2023-04-06 19:31:38.802918"], ["updated_at", "2023-04-06 19:31:38.802918"]]
+  ↳ app/controllers/landlords_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/landlords_controller.rb:3:in `create'
+  [1m[36mLandlord Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "landlords" WHERE "landlords"."email" = ? AND "landlords"."id" != ? LIMIT ?[0m  [["email", "dev@gmail.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/landlords_controller.rb:4:in `create'
+[active_model_serializers] Rendered LandlordSerializer with ActiveModelSerializers::Adapter::Attributes (1.09ms)
+Completed 201 Created in 366ms (Views: 13.8ms | ActiveRecord: 9.6ms | Allocations: 11689)
+
+
+Started POST "/contact" for 127.0.0.1 at 2023-04-06 22:32:15 +0300
+Processing by ContactsController#create as */*
+  Parameters: {"name"=>"dev", "email"=>"dev@gmail.com", "subject"=>"greetings", "message"=>"hello", "contact"=>{"name"=>"dev", "email"=>"dev@gmail.com", "subject"=>"greetings", "message"=>"hello"}}
+[31mUnpermitted parameter: :contact[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/contacts_controller.rb:5:in `create'
+  [1m[36mContact Create (3.1ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "subject", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "dev"], ["email", "dev@gmail.com"], ["subject", "greetings"], ["message", "hello"], ["created_at", "2023-04-06 19:32:15.816476"], ["updated_at", "2023-04-06 19:32:15.816476"]]
+  ↳ app/controllers/contacts_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/contacts_controller.rb:5:in `create'
+[active_model_serializers] Rendered ContactSerializer with ActiveModelSerializers::Adapter::Attributes (0.8ms)
+Completed 201 Created in 62ms (Views: 3.6ms | ActiveRecord: 8.8ms | Allocations: 7163)
+
+
+Started GET "/apartments" for 127.0.0.1 at 2023-04-06 22:32:20 +0300
+Processing by ApartmentsController#index as */*
+  [1m[36mLandlord Load (2.8ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.3ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ?[0m  [["landlord_id", 2]]
+  ↳ app/controllers/apartments_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.12ms)
+Completed 200 OK in 61ms (Views: 15.6ms | ActiveRecord: 5.3ms | Allocations: 5898)
+
+
+Started POST "/apartments" for 127.0.0.1 at 2023-04-06 22:33:25 +0300
+Processing by ApartmentsController#create as */*
+  Parameters: {"name"=>"Genesis", "image"=>"https://rb.gy/idlq", "price"=>200000000, "apartment"=>{"name"=>"Genesis", "image"=>"https://rb.gy/idlq", "price"=>200000000}}
+  [1m[36mLandlord Load (0.6ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/apartments_controller.rb:14:in `create'
+  [1m[36mApartment Create (1.7ms)[0m  [1m[32mINSERT INTO "apartments" ("name", "image", "price", "created_at", "updated_at", "landlord_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Genesis"], ["image", "https://rb.gy/idlq"], ["price", 200000000.0], ["created_at", "2023-04-06 19:33:25.174637"], ["updated_at", "2023-04-06 19:33:25.174637"], ["landlord_id", 2]]
+  ↳ app/controllers/apartments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (10.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/apartments_controller.rb:14:in `create'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (0.72ms)
+Completed 201 Created in 55ms (Views: 2.6ms | ActiveRecord: 13.9ms | Allocations: 9068)
+
+
+Started POST "/apartments" for 127.0.0.1 at 2023-04-06 22:33:50 +0300
+Processing by ApartmentsController#create as */*
+  Parameters: {"name"=>"Exodus", "image"=>"https://rb.gy/24ra", "price"=>3889093456789, "apartment"=>{"name"=>"Exodus", "image"=>"https://rb.gy/24ra", "price"=>3889093456789}}
+  [1m[36mLandlord Load (0.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/apartments_controller.rb:14:in `create'
+  [1m[36mApartment Create (2.8ms)[0m  [1m[32mINSERT INTO "apartments" ("name", "image", "price", "created_at", "updated_at", "landlord_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Exodus"], ["image", "https://rb.gy/24ra"], ["price", 3889093456789.0], ["created_at", "2023-04-06 19:33:50.434042"], ["updated_at", "2023-04-06 19:33:50.434042"], ["landlord_id", 2]]
+  ↳ app/controllers/apartments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (12.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/apartments_controller.rb:14:in `create'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (1.42ms)
+Completed 201 Created in 33ms (Views: 2.5ms | ActiveRecord: 15.3ms | Allocations: 4749)
+
+
+Started PUT "/apartments/2" for 127.0.0.1 at 2023-04-06 22:34:04 +0300
+Processing by ApartmentsController#update as */*
+  Parameters: {"apartment"=>{"is_on_sale"=>"sold"}, "id"=>"2"}
+  [1m[36mLandlord Load (0.7ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.4ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 2], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/apartments_controller.rb:23:in `update'
+  [1m[36mApartment Update (0.4ms)[0m  [1m[33mUPDATE "apartments" SET "updated_at" = ?, "is_on_sale" = ? WHERE "apartments"."id" = ?[0m  [["updated_at", "2023-04-06 19:34:04.487762"], ["is_on_sale", "sold"], ["id", 2]]
+  ↳ app/controllers/apartments_controller.rb:23:in `update'
+  [1m[36mTRANSACTION (12.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/apartments_controller.rb:23:in `update'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (0.44ms)
+Completed 200 OK in 48ms (Views: 1.9ms | ActiveRecord: 14.0ms | Allocations: 5461)
+
+
+Started PUT "/apartments/3" for 127.0.0.1 at 2023-04-06 22:34:09 +0300
+Processing by ApartmentsController#update as */*
+  Parameters: {"apartment"=>{"is_on_sale"=>"sold"}, "id"=>"3"}
+  [1m[36mLandlord Load (0.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.3ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 2], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/apartments_controller.rb:23:in `update'
+  [1m[36mApartment Update (0.5ms)[0m  [1m[33mUPDATE "apartments" SET "updated_at" = ?, "is_on_sale" = ? WHERE "apartments"."id" = ?[0m  [["updated_at", "2023-04-06 19:34:09.635831"], ["is_on_sale", "sold"], ["id", 3]]
+  ↳ app/controllers/apartments_controller.rb:23:in `update'
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/apartments_controller.rb:23:in `update'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (0.91ms)
+Completed 200 OK in 51ms (Views: 3.4ms | ActiveRecord: 9.8ms | Allocations: 5379)
+
+
+Started PUT "/apartments/3" for 127.0.0.1 at 2023-04-06 22:34:10 +0300
+Processing by ApartmentsController#update as */*
+  Parameters: {"apartment"=>{"is_on_sale"=>"sold"}, "id"=>"3"}
+  [1m[36mLandlord Load (0.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.2ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 2], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (0.6ms)
+Completed 200 OK in 28ms (Views: 4.2ms | ActiveRecord: 0.6ms | Allocations: 1752)
+
+
+Started PUT "/apartments/3" for 127.0.0.1 at 2023-04-06 22:34:11 +0300
+Processing by ApartmentsController#update as */*
+  Parameters: {"apartment"=>{"is_on_sale"=>"sold"}, "id"=>"3"}
+  [1m[36mLandlord Load (0.5ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (2.2ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 2], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (0.47ms)
+Completed 200 OK in 19ms (Views: 1.3ms | ActiveRecord: 2.7ms | Allocations: 1770)
+
+
+Started PUT "/apartments/3" for 127.0.0.1 at 2023-04-06 22:34:11 +0300
+Processing by ApartmentsController#update as */*
+  Parameters: {"apartment"=>{"is_on_sale"=>"sold"}, "id"=>"3"}
+  [1m[36mLandlord Load (0.6ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.3ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 2], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (4.1ms)
+Completed 200 OK in 43ms (Views: 7.4ms | ActiveRecord: 0.9ms | Allocations: 1770)
+
+
+Started PUT "/apartments/3" for 127.0.0.1 at 2023-04-06 22:34:11 +0300
+Processing by ApartmentsController#update as */*
+  Parameters: {"apartment"=>{"is_on_sale"=>"sold"}, "id"=>"3"}
+  [1m[36mLandlord Load (0.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.2ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 2], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (0.55ms)
+Completed 200 OK in 22ms (Views: 2.0ms | ActiveRecord: 0.5ms | Allocations: 1752)
+
+
+Started PUT "/apartments/3" for 127.0.0.1 at 2023-04-06 22:34:11 +0300
+Processing by ApartmentsController#update as */*
+  Parameters: {"apartment"=>{"is_on_sale"=>"sold"}, "id"=>"3"}
+  [1m[36mLandlord Load (0.2ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.6ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 2], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (0.65ms)
+Completed 200 OK in 36ms (Views: 5.8ms | ActiveRecord: 0.8ms | Allocations: 1761)
+
+
+Started PUT "/apartments/3" for 127.0.0.1 at 2023-04-06 22:34:11 +0300
+Processing by ApartmentsController#update as */*
+  Parameters: {"apartment"=>{"is_on_sale"=>"sold"}, "id"=>"3"}
+  [1m[36mLandlord Load (1.2ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.9ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 2], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (0.58ms)
+Completed 200 OK in 27ms (Views: 5.7ms | ActiveRecord: 2.1ms | Allocations: 1765)
+
+
+Started PUT "/apartments/3" for 127.0.0.1 at 2023-04-06 22:34:12 +0300
+Processing by ApartmentsController#update as */*
+  Parameters: {"apartment"=>{"is_on_sale"=>"sold"}, "id"=>"3"}
+  [1m[36mLandlord Load (0.2ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.4ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 2], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (3.58ms)
+Completed 200 OK in 26ms (Views: 9.6ms | ActiveRecord: 0.6ms | Allocations: 1763)
+
+
+Started PUT "/apartments/3" for 127.0.0.1 at 2023-04-06 22:34:12 +0300
+Processing by ApartmentsController#update as */*
+  Parameters: {"apartment"=>{"is_on_sale"=>"sold"}, "id"=>"3"}
+  [1m[36mLandlord Load (0.2ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.2ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 2], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (1.53ms)
+Completed 200 OK in 28ms (Views: 6.4ms | ActiveRecord: 0.4ms | Allocations: 1768)
+
+
+Started PUT "/apartments/3" for 127.0.0.1 at 2023-04-06 22:34:12 +0300
+Processing by ApartmentsController#update as */*
+  Parameters: {"apartment"=>{"is_on_sale"=>"sold"}, "id"=>"3"}
+  [1m[36mLandlord Load (0.2ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.2ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 2], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (0.64ms)
+Completed 200 OK in 14ms (Views: 2.1ms | ActiveRecord: 0.4ms | Allocations: 1766)
+
+
+Started PUT "/apartments/3" for 127.0.0.1 at 2023-04-06 22:34:12 +0300
+Processing by ApartmentsController#update as */*
+  Parameters: {"apartment"=>{"is_on_sale"=>"sold"}, "id"=>"3"}
+  [1m[36mLandlord Load (0.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.2ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 2], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (0.49ms)
+Completed 200 OK in 16ms (Views: 6.1ms | ActiveRecord: 0.5ms | Allocations: 1756)
+
+
+Started DELETE "/apartments/3" for 127.0.0.1 at 2023-04-06 22:34:13 +0300
+Processing by ApartmentsController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mLandlord Load (0.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.3ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 2], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/apartments_controller.rb:31:in `destroy'
+  [1m[36mApartment Destroy (0.4ms)[0m  [1m[31mDELETE FROM "apartments" WHERE "apartments"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/apartments_controller.rb:31:in `destroy'
+  [1m[36mTRANSACTION (11.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/apartments_controller.rb:31:in `destroy'
+Completed 204 No Content in 33ms (ActiveRecord: 12.4ms | Allocations: 4293)
+
+
+Started DELETE "/apartments/2" for 127.0.0.1 at 2023-04-06 22:34:16 +0300
+Processing by ApartmentsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mLandlord Load (0.2ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.3ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ? AND "apartments"."id" = ? LIMIT ?[0m  [["landlord_id", 2], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/apartments_controller.rb:38:in `set_apartment'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/apartments_controller.rb:31:in `destroy'
+  [1m[36mApartment Destroy (0.7ms)[0m  [1m[31mDELETE FROM "apartments" WHERE "apartments"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/apartments_controller.rb:31:in `destroy'
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/apartments_controller.rb:31:in `destroy'
+Completed 204 No Content in 25ms (ActiveRecord: 11.5ms | Allocations: 4683)
+
+
+Started POST "/apartments" for 127.0.0.1 at 2023-04-06 22:34:18 +0300
+Processing by ApartmentsController#create as */*
+  Parameters: {"name"=>"Exodus", "image"=>"https://rb.gy/24ra", "price"=>3889093456789, "apartment"=>{"name"=>"Exodus", "image"=>"https://rb.gy/24ra", "price"=>3889093456789}}
+  [1m[36mLandlord Load (0.4ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/apartments_controller.rb:14:in `create'
+  [1m[36mApartment Create (0.4ms)[0m  [1m[32mINSERT INTO "apartments" ("name", "image", "price", "created_at", "updated_at", "landlord_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Exodus"], ["image", "https://rb.gy/24ra"], ["price", 3889093456789.0], ["created_at", "2023-04-06 19:34:18.020958"], ["updated_at", "2023-04-06 19:34:18.020958"], ["landlord_id", 2]]
+  ↳ app/controllers/apartments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (11.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/apartments_controller.rb:14:in `create'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (0.56ms)
+Completed 201 Created in 43ms (Views: 2.9ms | ActiveRecord: 12.1ms | Allocations: 5135)
+
+
+Started POST "/apartments" for 127.0.0.1 at 2023-04-06 22:34:41 +0300
+Processing by ApartmentsController#create as */*
+  Parameters: {"name"=>"Genesis", "image"=>"https://rb.gy/24ra", "price"=>3889093456789, "apartment"=>{"name"=>"Genesis", "image"=>"https://rb.gy/24ra", "price"=>3889093456789}}
+  [1m[36mLandlord Load (0.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/apartments_controller.rb:14:in `create'
+  [1m[36mApartment Create (0.4ms)[0m  [1m[32mINSERT INTO "apartments" ("name", "image", "price", "created_at", "updated_at", "landlord_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Genesis"], ["image", "https://rb.gy/24ra"], ["price", 3889093456789.0], ["created_at", "2023-04-06 19:34:42.013379"], ["updated_at", "2023-04-06 19:34:42.013379"], ["landlord_id", 2]]
+  ↳ app/controllers/apartments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (10.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/apartments_controller.rb:14:in `create'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 201 Created in 30ms (Views: 1.0ms | ActiveRecord: 11.4ms | Allocations: 5144)
+
+
+Started POST "/apartments" for 127.0.0.1 at 2023-04-06 22:34:48 +0300
+Processing by ApartmentsController#create as */*
+  Parameters: {"name"=>"MArk", "image"=>"https://rb.gy/24ra", "price"=>3889093456789, "apartment"=>{"name"=>"MArk", "image"=>"https://rb.gy/24ra", "price"=>3889093456789}}
+  [1m[36mLandlord Load (0.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/apartments_controller.rb:14:in `create'
+  [1m[36mApartment Create (3.4ms)[0m  [1m[32mINSERT INTO "apartments" ("name", "image", "price", "created_at", "updated_at", "landlord_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MArk"], ["image", "https://rb.gy/24ra"], ["price", 3889093456789.0], ["created_at", "2023-04-06 19:34:48.587208"], ["updated_at", "2023-04-06 19:34:48.587208"], ["landlord_id", 2]]
+  ↳ app/controllers/apartments_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/apartments_controller.rb:14:in `create'
+[active_model_serializers] Rendered ApartmentSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 201 Created in 31ms (Views: 1.0ms | ActiveRecord: 14.2ms | Allocations: 5127)
+
+
+Started GET "/todos" for 127.0.0.1 at 2023-04-06 22:35:13 +0300
+Processing by TodosController#index as HTML
+  [1m[36mLandlord Load (0.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."landlord_id" = ?[0m  [["landlord_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.12ms)
+Completed 200 OK in 28ms (Views: 9.7ms | ActiveRecord: 3.4ms | Allocations: 2685)
+
+
+Started POST "/todos" for 127.0.0.1 at 2023-04-06 22:36:05 +0300
+Processing by TodosController#create as */*
+  Parameters: {"title"=>"Repair", "description"=>"There is a leakage in house number 2", "category"=>"Repair Genesis", "priority"=>"high", "due_date"=>"2023-04-12", "todo"=>{"title"=>"Repair", "description"=>"There is a leakage in house number 2", "category"=>"Repair Genesis", "priority"=>"high", "due_date"=>"2023-04-12"}}
+  [1m[36mLandlord Load (0.2ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:14:in `create'
+  [1m[36mTodo Create (1.7ms)[0m  [1m[32mINSERT INTO "todos" ("landlord_id", "title", "description", "category", "priority", "due_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["landlord_id", 2], ["title", "Repair"], ["description", "There is a leakage in house number 2"], ["category", "Repair Genesis"], ["priority", "high"], ["due_date", "2023-04-12"], ["created_at", "2023-04-06 19:36:05.366437"], ["updated_at", "2023-04-06 19:36:05.366437"]]
+  ↳ app/controllers/todos_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (12.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:14:in `create'
+[active_model_serializers] Rendered TodoSerializer with ActiveModelSerializers::Adapter::Attributes (0.85ms)
+Completed 201 Created in 72ms (Views: 5.3ms | ActiveRecord: 16.0ms | Allocations: 9481)
+
+
+Started GET "/todos" for 127.0.0.1 at 2023-04-06 22:36:10 +0300
+Started GET "/me" for 127.0.0.1 at 2023-04-06 22:36:10 +0300
+Processing by TodosController#index as HTML
+Processing by LandlordsController#show as */*
+  [1m[36mLandlord Load (2.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  ↳ app/controllers/landlords_controller.rb:13:in `show'
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."landlord_id" = ?[0m  [["landlord_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mLandlord Load (0.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.6ms)
+  ↳ app/controllers/landlords_controller.rb:13:in `show'
+Completed 200 OK in 31ms (Views: 11.2ms | ActiveRecord: 2.5ms | Allocations: 2581)
+
+
+[active_model_serializers] Rendered LandlordSerializer with ActiveModelSerializers::Adapter::Attributes (0.48ms)
+Completed 200 OK in 30ms (Views: 3.0ms | ActiveRecord: 2.3ms | Allocations: 2869)
+
+
+Started GET "/apartments" for 127.0.0.1 at 2023-04-06 22:41:19 +0300
+Processing by ApartmentsController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mLandlord Load (0.4ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.5ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ?[0m  [["landlord_id", 2]]
+  ↳ app/controllers/apartments_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.93ms)
+Completed 200 OK in 86ms (Views: 34.2ms | ActiveRecord: 6.7ms | Allocations: 12835)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2023-04-06 22:41:22 +0300
+Processing by SessionsController#destroy as */*
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 176)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-04-06 22:41:51 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"benard@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"benard@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mLandlord Load (0.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."email" = ? LIMIT ?[0m  [["email", "benard@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 401 Unauthorized in 12ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 814)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-04-06 22:41:53 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"benard@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"benard@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mLandlord Load (0.4ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."email" = ? LIMIT ?[0m  [["email", "benard@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 401 Unauthorized in 4ms (Views: 1.3ms | ActiveRecord: 0.4ms | Allocations: 563)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-04-06 22:41:58 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"k@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"k@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mLandlord Load (0.2ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."email" = ? LIMIT ?[0m  [["email", "k@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered LandlordSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 201 Created in 336ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 1127)
+
+
+Started GET "/apartments" for 127.0.0.1 at 2023-04-06 22:42:03 +0300
+Processing by ApartmentsController#index as */*
+  [1m[36mLandlord Load (0.2ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.2ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ?[0m  [["landlord_id", 1]]
+  ↳ app/controllers/apartments_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.43ms)
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 0.4ms | Allocations: 1507)
+
+
+Started GET "/todos" for 127.0.0.1 at 2023-04-06 22:42:05 +0300
+Processing by TodosController#index as HTML
+  [1m[36mLandlord Load (0.6ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."landlord_id" = ?[0m  [["landlord_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.4ms)
+Completed 200 OK in 46ms (Views: 30.5ms | ActiveRecord: 2.0ms | Allocations: 6959)
+
+
+Started GET "/apartments" for 127.0.0.1 at 2023-04-06 22:42:08 +0300
+Processing by ApartmentsController#index as */*
+  [1m[36mLandlord Load (0.4ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mApartment Load (0.2ms)[0m  [1m[34mSELECT "apartments".* FROM "apartments" WHERE "apartments"."landlord_id" = ?[0m  [["landlord_id", 1]]
+  ↳ app/controllers/apartments_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.44ms)
+Completed 200 OK in 15ms (Views: 8.7ms | ActiveRecord: 0.7ms | Allocations: 1505)
+
+
+Started GET "/todos" for 127.0.0.1 at 2023-04-06 22:42:13 +0300
+Processing by TodosController#index as HTML
+  [1m[36mLandlord Load (0.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."landlord_id" = ?[0m  [["landlord_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.92ms)
+Completed 200 OK in 12ms (Views: 7.8ms | ActiveRecord: 0.5ms | Allocations: 1675)
+
+
+Started DELETE "/todos/8" for 127.0.0.1 at 2023-04-06 22:42:19 +0300
+Processing by TodosController#destroy as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mLandlord Load (0.2ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."landlord_id" = ? AND "todos"."id" = ? LIMIT ?[0m  [["landlord_id", 1], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:38:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:31:in `destroy'
+  [1m[36mTodo Destroy (0.6ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/todos_controller.rb:31:in `destroy'
+  [1m[36mTRANSACTION (10.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:31:in `destroy'
+Completed 204 No Content in 31ms (ActiveRecord: 12.1ms | Allocations: 4719)
+
+
+Started GET "/todos" for 127.0.0.1 at 2023-04-06 22:43:17 +0300
+Processing by TodosController#index as HTML
+  [1m[36mLandlord Load (0.3ms)[0m  [1m[34mSELECT "landlords".* FROM "landlords" WHERE "landlords"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_landlord'
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."landlord_id" = ?[0m  [["landlord_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.44ms)
+Completed 200 OK in 15ms (Views: 9.7ms | ActiveRecord: 0.6ms | Allocations: 1517)
+
+

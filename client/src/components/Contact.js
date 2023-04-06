@@ -37,6 +37,7 @@ const Contact = () => {
       fetch('/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        // 'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
         body: JSON.stringify(newMessage)
       })
       .then(response => response.json())
