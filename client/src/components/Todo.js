@@ -15,6 +15,9 @@ const Todo = () => {
     const [formSuccess, setFormSuccess] = useState(false);
 
     const [todos, setTodos] = useState([]);
+    
+
+    const [editing, setEditing] = useState(false);
 
     useEffect(() => {
         axios.get("/todos")
@@ -36,29 +39,29 @@ const Todo = () => {
         });
     };
 
-    const updateTodo = (id, updatedTodo) => {
-        axios.put(`/todos/${id}`, updatedTodo)
-        .then((response) => {
-            setTodos(todos.map((todo) => (todo.id === response.data.id ? response.data : todo)));
-        })
-        .catch((error) => {
+    const handleEdit = () => {
+        setEditing(true);
+    };
+
+    const handleSave = () => {
+        axios
+          .put(`/todos/${todos.id}`, {
+            title,
+            description,
+            category,
+            priority,
+            due_date
+          })
+          .then((response) => {
+            console.log(response.data);
+            setEditing(false);
+          })
+          .catch((error) => {
             console.log(error);
-        });
+          });
     };
 
-    const handleCompletedToggle = (id) => {
-        const updatedTodo = todos.find((todo) => todo.id === id);
-        updatedTodo.completed = !updatedTodo.completed;
-        updateTodo(id, updatedTodo);
-    };
 
-    const handleTodoChange = (event) => {
-        const { name, value } = event.target;
-        setTodos((prevTodo) => ({
-            ...prevTodo,
-        [name]: value,
-        }));
-    };
 
     const history = useHistory();
 
@@ -116,6 +119,38 @@ const Todo = () => {
 
     return (
       <div>
+        {editing ? (
+        <div>
+        <h1>Edit Todo</h1>
+          <input
+            type="text"
+            value={title}
+            defaultValue={todos.title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <input
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <input
+            type="text"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          />
+          <input
+            type="text"
+            value={priority}
+            onChange={(e) => setPriority(e.target.value)}
+          />
+          <input
+            type="date"
+            value={due_date}
+            onChange={(e) => setDueDate(e.target.value)}
+          />
+          <button onClick={handleSave}>Save</button>
+        </div>
+      ) : (
       <div style={myStyle}>
         <div className="contact-page" style={{display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", backgroundImage: "https://rb.gy/idlq"}}>
           <Form onSubmit={handleSubmit} error={!!formError} success={formSuccess}>
@@ -131,6 +166,7 @@ const Todo = () => {
           </Form>
         </div>
       </div>
+      )}
       <div>
         <h1 style={{textAlign:"center"}}>My To Do List</h1>
          <ul>
@@ -145,7 +181,7 @@ const Todo = () => {
                                 Priority: {todo.priority} 
                                 Due Date: {todo.due_date}
 
-                                <Button onClick={() => handleTodoChange(todo.id)} floated='right'>Edit</Button>
+                                <Button onClick={() => handleEdit(todo.id)} floated='right'>Edit</Button>
                                 <Button onClick={() => deleteTodo(todo.id)} floated='right'>Delete</Button>
                             
                             </List.Description>
