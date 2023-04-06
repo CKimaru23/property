@@ -5,6 +5,7 @@ class Landlord < ApplicationRecord
     # has_many :todos
 
     has_many :apartments
+    has_many :todos
   
     # Validations
     validates :fname, presence: true

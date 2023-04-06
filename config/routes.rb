@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :todos
   resources :apartments, only: [:create, :show, :index, :update, :destroy]
   resources :contacts
   post "/signup", to: "landlords#create"
