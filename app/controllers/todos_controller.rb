@@ -1,4 +1,4 @@
-class ApartmentsController < ApplicationController
+class TodosController < ApplicationController
     before_action :set_todo, only: [:show, :update, :destroy]
   
     def index
@@ -39,7 +39,7 @@ class ApartmentsController < ApplicationController
     end
   
     def todo_params
-      params.require(:todo).permit(:title, :description, :category, :priority, :dueDate, :completed)
+      params.require(:todo).permit(:title, :description, :category, :priority, :due_date, :completed)
     end
   end
   

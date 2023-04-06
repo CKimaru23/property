@@ -70,7 +70,7 @@ const Contact = () => {
     return (
       <div>
       <div style={myStyle}>
-        <div className="contact-page" style={{display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", backgroundImage: "https://rb.gy/idlq"}}>
+        <div style={{display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", backgroundImage: "https://rb.gy/idlq"}}>
           <Form onSubmit={handleSubmit} error={!!formError} success={formSuccess}>
           <h1>Contact Us</h1>
             <Form.Input label="Name" name="name" value={name} onChange={event => setName(event.target.value)} required />

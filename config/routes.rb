@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :todos
+  resources :todos, only: [:create, :show, :index, :update, :destroy]
   resources :apartments, only: [:create, :show, :index, :update, :destroy]
-  resources :contacts
+  # resources :contacts
   post "/signup", to: "landlords#create"
   get "/me", to: "landlords#show"
 
@@ -9,5 +9,12 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   post "/contact", to: "contacts#create"
+
+  # resources :landlords do
+  #   resources :todos
+  # end
+
+  # post  "/todos", to: "todos#create"
+  
   
 end

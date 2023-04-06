@@ -17,13 +17,7 @@ class Landlord < ApplicationRecord
     validates :password_confirmation, presence: true
     validate :passwords_match
 
-    # private
-
-    # def passwords_match
-    #   if password != password_confirmation
-    #     errors.add(:password_confirmation, "does not match password")
-    #   end
-    # end
+   
   
     has_secure_password
   
@@ -31,6 +25,14 @@ class Landlord < ApplicationRecord
     #   landlord = find_by_email(email)
     #   landlord&.authenticate(password)
     # end
+
+    private
+
+    def passwords_match
+      if password != password_confirmation
+        errors.add(:password_confirmation, "does not match password")
+      end
+    end
   end
   
   

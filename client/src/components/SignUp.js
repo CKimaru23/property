@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form as SemanticForm, Header, Icon, Message, Label, Grid, Form } from 'semantic-ui-react';
-// import {useHistory } from 'react-router-dom'
+import {useHistory } from 'react-router-dom'
 
 
 function SignUp({ setLandlord }) {
@@ -38,6 +38,9 @@ function SignUp({ setLandlord }) {
 
   //   }
   // };
+
+  const history = useHistory();
+
   function handleSubmit(e) {
     e.preventDefault();
     fetch("/signup", {
@@ -57,8 +60,10 @@ function SignUp({ setLandlord }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((landlord) => setLandlord(landlord));
+        history.push("/home");
       }
     });
+    
   }
  
   return (
